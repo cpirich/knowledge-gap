@@ -67,6 +67,17 @@ npm test -- --run    # Run tests once (no watch)
 - Biome handles formatting and linting (not ESLint/Prettier)
 - Indent with 2 spaces, max line width 100
 
+## Pre-Commit Checklist
+
+Before committing any code, you MUST verify all of the following pass:
+
+1. **Tests**: `npm test -- --run` — all tests must pass
+2. **Lint**: `npm run lint` — no lint errors
+3. **Format**: `npm run format` — run the formatter to ensure consistent style
+4. **Typecheck**: `npm run typecheck` — no TypeScript errors
+
+Do not commit code that fails any of these checks.
+
 ## Environment Variables
 
 - `ANTHROPIC_API_KEY` — Required for AI features (Claude API)
