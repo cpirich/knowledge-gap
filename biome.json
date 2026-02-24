@@ -42,7 +42,8 @@
 			"**/*.mts",
 			"!**/src/components/ui",
 			"!**/.next",
-			"!**/node_modules"
+			"!**/node_modules",
+			"!**/coverage"
 		]
 	},
 	"javascript": {

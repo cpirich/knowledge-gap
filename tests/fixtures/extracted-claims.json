@@ -1,0 +1,71 @@
+[
+  {
+    "id": "claim_fixture_1",
+    "paperId": "paper_fixture_1",
+    "chunkId": "chunk_fixture_1",
+    "type": "finding",
+    "statement": "Selective SWS deprivation impairs declarative memory consolidation by 23-31% relative to control conditions.",
+    "evidence": "Meta-analysis of 47 studies (N = 1,842 participants) with p < 0.001.",
+    "confidence": "high",
+    "themeIds": ["theme_fixture_1"],
+    "metadata": {
+      "section": "Results",
+      "methodology": "meta-analysis"
+    }
+  },
+  {
+    "id": "claim_fixture_2",
+    "paperId": "paper_fixture_1",
+    "chunkId": "chunk_fixture_1",
+    "type": "finding",
+    "statement": "REM sleep deprivation reduces procedural memory performance by 18-27% and impairs emotional memory discrimination.",
+    "evidence": "Meta-analysis showing p < 0.01 and effect size d = 0.74 for emotional memory.",
+    "confidence": "high",
+    "themeIds": ["theme_fixture_2"],
+    "metadata": {
+      "section": "Results",
+      "methodology": "meta-analysis"
+    }
+  },
+  {
+    "id": "claim_fixture_3",
+    "paperId": "paper_fixture_1",
+    "chunkId": "chunk_fixture_2",
+    "type": "methodology",
+    "statement": "Targeted memory reactivation during SWS using odor or auditory cues enhances declarative memory consolidation by 12-19%.",
+    "evidence": "Comparison of cued versus uncued sleep conditions in TMR paradigm.",
+    "confidence": "medium",
+    "themeIds": ["theme_fixture_1"],
+    "metadata": {
+      "section": "Results",
+      "methodology": "targeted memory reactivation"
+    }
+  },
+  {
+    "id": "claim_fixture_4",
+    "paperId": "paper_fixture_1",
+    "chunkId": "chunk_fixture_2",
+    "type": "assertion",
+    "statement": "The rigid separation between declarative-SWS and procedural-REM consolidation pathways appears oversimplified.",
+    "evidence": "Recent studies show cross-stage interactions that modulate consolidation outcomes.",
+    "confidence": "medium",
+    "themeIds": ["theme_fixture_1", "theme_fixture_2"],
+    "metadata": {
+      "section": "Discussion"
+    }
+  },
+  {
+    "id": "claim_fixture_5",
+    "paperId": "paper_fixture_1",
+    "chunkId": "chunk_fixture_2",
+    "type": "finding",
+    "statement": "Sleep spindle density during N2 sleep correlates positively with overnight memory improvement (r = 0.42).",
+    "evidence": "Correlation analysis with p < 0.001 suggesting spindle-mediated consolidation beyond SWS.",
+    "confidence": "high",
+    "themeIds": ["theme_fixture_3"],
+    "metadata": {
+      "section": "Results",
+      "methodology": "correlation analysis"
+    }
+  }
+]

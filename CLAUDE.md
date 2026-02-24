@@ -67,6 +67,10 @@ npm test -- --run    # Run tests once (no watch)
 - Biome handles formatting and linting (not ESLint/Prettier)
 - Indent with 2 spaces, max line width 100
 
+## Agent Usage
+
+When delegating work to subagents, always use agent teams (TeamCreate + Task with team_name) instead of standalone background tasks. This allows the user to see what agents are doing in real time.
+
 ## Pre-Commit Checklist
 
 Before committing any code, you MUST verify all of the following pass:
