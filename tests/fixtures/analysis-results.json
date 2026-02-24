@@ -1,0 +1,113 @@
+{
+  "id": "analysis_fixture_1",
+  "paperIds": ["paper_fixture_1", "paper_fixture_2"],
+  "themes": [
+    {
+      "id": "theme_fixture_1",
+      "label": "SWS and Declarative Memory",
+      "description": "Research on how slow-wave sleep contributes to declarative memory consolidation through hippocampal-neocortical dialogue.",
+      "claimIds": ["claim_fixture_1", "claim_fixture_3", "claim_fixture_4"],
+      "paperIds": ["paper_fixture_1"],
+      "density": 0.6
+    },
+    {
+      "id": "theme_fixture_2",
+      "label": "REM Sleep and Procedural/Emotional Memory",
+      "description": "Evidence linking REM sleep to procedural skill consolidation and emotional memory processing.",
+      "claimIds": ["claim_fixture_2", "claim_fixture_4"],
+      "paperIds": ["paper_fixture_1"],
+      "density": 0.4
+    },
+    {
+      "id": "theme_fixture_3",
+      "label": "Sleep Spindles and Memory",
+      "description": "The role of thalamocortical spindles during N2 sleep in memory consolidation processes.",
+      "claimIds": ["claim_fixture_5"],
+      "paperIds": ["paper_fixture_1"],
+      "density": 0.15
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel_fixture_1",
+      "sourceThemeId": "theme_fixture_1",
+      "targetThemeId": "theme_fixture_2",
+      "type": "parallel",
+      "strength": 0.7,
+      "evidence": "Both themes address sleep-stage-specific memory consolidation pathways that interact during normal sleep cycles."
+    },
+    {
+      "id": "rel_fixture_2",
+      "sourceThemeId": "theme_fixture_3",
+      "targetThemeId": "theme_fixture_1",
+      "type": "supports",
+      "strength": 0.5,
+      "evidence": "Sleep spindles during N2 facilitate the transfer of memories initiated during SWS consolidation."
+    }
+  ],
+  "contradictions": [
+    {
+      "id": "contra_fixture_1",
+      "claimAId": "claim_fixture_1",
+      "claimBId": "claim_fixture_4",
+      "paperAId": "paper_fixture_1",
+      "paperBId": "paper_fixture_1",
+      "description": "The strict SWS-declarative association is challenged by evidence of cross-stage interactions.",
+      "severity": "minor",
+      "category": "scope_difference",
+      "resolution": "The dual-process model may need modification to account for cross-stage contributions."
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap_fixture_1",
+      "title": "Napping vs Nocturnal Sleep Consolidation",
+      "description": "The comparative efficiency of daytime napping versus full nocturnal sleep for memory consolidation is poorly characterized.",
+      "type": "methodological_gap",
+      "relatedThemeIds": ["theme_fixture_1", "theme_fixture_2"],
+      "confidence": 0.8,
+      "evidence": "While brief naps containing SWS show benefits, ceiling effects and comparative efficiency remain unknown.",
+      "potentialImpact": "Could inform practical recommendations for optimizing memory consolidation in educational and clinical settings."
+    },
+    {
+      "id": "gap_fixture_2",
+      "title": "Age-Related Sleep Architecture Changes",
+      "description": "The interaction between sleep-dependent consolidation and age-related changes in sleep architecture is insufficiently understood.",
+      "type": "sparse_coverage",
+      "relatedThemeIds": ["theme_fixture_3"],
+      "confidence": 0.7,
+      "evidence": "Older adults exhibit reduced SWS and altered spindle characteristics but causal links to memory decline are unclear.",
+      "potentialImpact": "May reveal therapeutic targets for age-related cognitive decline through sleep interventions."
+    }
+  ],
+  "questions": [
+    {
+      "id": "question_fixture_1",
+      "gapId": "gap_fixture_1",
+      "question": "What is the minimum nap duration and required sleep stage composition to achieve declarative memory consolidation comparable to full nocturnal sleep?",
+      "rationale": "Defining the dose-response relationship between nap architecture and memory outcomes would clarify the efficiency of napping as a consolidation strategy.",
+      "relatedThemeIds": ["theme_fixture_1"],
+      "suggestedMethodology": "Within-subjects polysomnography study comparing 30, 60, and 90-minute naps with full-night sleep using paired-associates learning tasks.",
+      "priorityScore": 0.85
+    },
+    {
+      "id": "question_fixture_2",
+      "gapId": "gap_fixture_2",
+      "question": "To what extent do pharmacologically enhanced sleep spindles in older adults restore sleep-dependent memory consolidation?",
+      "rationale": "If spindle reduction causally mediates age-related consolidation deficits, spindle enhancement could be a therapeutic target.",
+      "relatedThemeIds": ["theme_fixture_3"],
+      "suggestedMethodology": "Double-blind RCT with zolpidem-enhanced spindles in healthy older adults measuring overnight declarative and procedural memory change.",
+      "priorityScore": 0.78
+    },
+    {
+      "id": "question_fixture_3",
+      "gapId": "gap_fixture_1",
+      "question": "How do emotional valence and arousal interact with nap-based versus nocturnal sleep consolidation?",
+      "rationale": "Emotional memory may require REM sleep, which is more prevalent in nocturnal sleep, creating a potential disadvantage for nap-based consolidation.",
+      "relatedThemeIds": ["theme_fixture_1", "theme_fixture_2"],
+      "priorityScore": 0.72
+    }
+  ],
+  "createdAt": "2026-01-15T10:30:00.000Z",
+  "status": "complete"
+}

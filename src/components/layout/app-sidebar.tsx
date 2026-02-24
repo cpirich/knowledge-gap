@@ -1,0 +1,64 @@
+"use client";
+
+import { AlertTriangle, HelpCircle, LayoutDashboard, Network, Upload } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+	Sidebar,
+	SidebarContent,
+	SidebarGroup,
+	SidebarGroupContent,
+	SidebarGroupLabel,
+	SidebarHeader,
+	SidebarMenu,
+	SidebarMenuButton,
+	SidebarMenuItem,
+	SidebarRail,
+} from "@/components/ui/sidebar";
+
+const navItems = [
+	{ title: "Dashboard", href: "/", icon: LayoutDashboard },
+	{ title: "Upload", href: "/upload", icon: Upload },
+	{ title: "Knowledge Map", href: "/map", icon: Network },
+	{ title: "Contradictions", href: "/contradictions", icon: AlertTriangle },
+	{ title: "Gaps & Questions", href: "/gaps", icon: HelpCircle },
+];
+
+export function AppSidebar() {
+	const pathname = usePathname();
+
+	return (
+		<Sidebar>
+			<SidebarHeader>
+				<div className="flex items-center gap-2 px-2 py-1">
+					<Network className="size-5 text-primary" />
+					<span className="text-sm font-semibold">Knowledge Gap Finder</span>
+				</div>
+			</SidebarHeader>
+			<SidebarContent>
+				<SidebarGroup>
+					<SidebarGroupLabel>Navigation</SidebarGroupLabel>
+					<SidebarGroupContent>
+						<SidebarMenu>
+							{navItems.map((item) => (
+								<SidebarMenuItem key={item.href}>
+									<SidebarMenuButton
+										asChild
+										isActive={item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)}
+										tooltip={item.title}
+									>
+										<Link href={item.href}>
+											<item.icon />
+											<span>{item.title}</span>
+										</Link>
+									</SidebarMenuButton>
+								</SidebarMenuItem>
+							))}
+						</SidebarMenu>
+					</SidebarGroupContent>
+				</SidebarGroup>
+			</SidebarContent>
+			<SidebarRail />
+		</Sidebar>
+	);
+}
