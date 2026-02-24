@@ -1,0 +1,59 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Bash(git:*)",
+      "Bash(gh:*)",
+      "Bash(curl:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(cat:*)",
+      "Bash(echo:*)",
+      "Bash(npx:*)",
+      "Bash(npm:*)",
+      "Bash(node:*)",
+      "Bash(python3:*)",
+      "Bash(test:*)",
+      "Bash(jq:*)",
+      "Bash(tmux:*)",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__screenshot",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__click",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__type_text",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__execute_javascript",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__get_console_logs",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__get_page_content",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__scroll_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__wait_for_navigation",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__get_network_requests",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__get_styles",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__hover"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "true",
+    "ENABLE_LSP_TOOL": "true"
+  },
+  "plansDirectory": "plans",
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "chrome-devtools-mcp@chrome-devtools-plugins": true
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "command": "npx @biomejs/biome format --write $CLAUDE_FILE_PATH"
+      }
+    ]
+  }
+}
