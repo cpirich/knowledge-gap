@@ -3,6 +3,8 @@ import { generateQuestions } from "@/lib/analysis/question-generator";
 import { getLatestAnalysis, saveAnalysis } from "@/lib/store";
 import type { ApiResponse, ResearchQuestion } from "@/lib/types";
 
+export const dynamic = "force-static";
+
 export async function POST(): Promise<NextResponse<ApiResponse<ResearchQuestion[]>>> {
 	try {
 		const analysis = getLatestAnalysis();

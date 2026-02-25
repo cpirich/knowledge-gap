@@ -6,6 +6,7 @@ import { GapList } from "@/components/gaps/gap-list";
 import { IntersectionMatrix } from "@/components/gaps/intersection-matrix";
 import { QuestionCard } from "@/components/gaps/question-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { demoAnalysis, isStaticDemo } from "@/lib/demo/data";
 import type { AnalysisResult, ApiResponse } from "@/lib/types";
 
 export default function GapsPage() {
@@ -13,6 +14,11 @@ export default function GapsPage() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
+		if (isStaticDemo) {
+			setAnalysis(demoAnalysis);
+			setLoading(false);
+			return;
+		}
 		async function load() {
 			try {
 				const res = await fetch("/api/analyze/latest");

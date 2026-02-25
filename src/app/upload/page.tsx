@@ -6,6 +6,7 @@ import { PaperList } from "@/components/upload/paper-list";
 import { UploadProgress } from "@/components/upload/upload-progress";
 import { usePapers } from "@/hooks/use-papers";
 import { useUpload } from "@/hooks/use-upload";
+import { isStaticDemo } from "@/lib/demo/data";
 
 export default function UploadPage() {
 	const { papers, loading, refresh } = usePapers();
@@ -26,6 +27,7 @@ export default function UploadPage() {
 	};
 
 	const handleDelete = async (id: string) => {
+		if (isStaticDemo) return;
 		try {
 			await fetch(`/api/papers/${id}`, { method: "DELETE" });
 			toast.success("Paper deleted");
@@ -43,14 +45,27 @@ export default function UploadPage() {
 					Add academic papers to build your knowledge map
 				</p>
 			</div>
-			<FileDropzone onFilesSelected={handleFilesSelected} disabled={uploading} />
-			<UploadProgress progress={progress} visible={uploading} />
+			{isStaticDemo ? (
+				<div className="flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed p-12 text-center">
+					<p className="text-sm font-medium">Demo Mode</p>
+					<p className="text-xs text-muted-foreground">
+						Upload is disabled in this demo. Below are 2 pre-loaded sleep research papers.
+					</p>
+				</div>
+			) : (
+				<>
+					<FileDropzone onFilesSelected={handleFilesSelected} disabled={uploading} />
+					<UploadProgress progress={progress} visible={uploading} />
+				</>
+			)}
 			<div>
-				<h3 className="mb-3 text-sm font-medium">Uploaded Papers</h3>
+				<h3 className="mb-3 text-sm font-medium">
+					{isStaticDemo ? "Demo Papers" : "Uploaded Papers"}
+				</h3>
 				{loading ? (
 					<p className="text-sm text-muted-foreground">Loading...</p>
 				) : (
-					<PaperList papers={papers} onDelete={handleDelete} />
+					<PaperList papers={papers} onDelete={isStaticDemo ? undefined : handleDelete} />
 				)}
 			</div>
 		</div>

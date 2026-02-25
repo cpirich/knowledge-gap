@@ -3,6 +3,8 @@ import { buildGraphData } from "@/lib/graph/builder";
 import { getLatestAnalysis } from "@/lib/store";
 import type { ApiResponse, GraphData } from "@/lib/types";
 
+export const dynamic = "force-static";
+
 export async function GET(): Promise<NextResponse<ApiResponse<GraphData>>> {
 	try {
 		const analysis = getLatestAnalysis();

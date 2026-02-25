@@ -1,14 +1,16 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { demoGraphData, isStaticDemo } from "@/lib/demo/data";
 import type { ApiResponse, GraphData } from "@/lib/types";
 
 export function useGraphData() {
-	const [graphData, setGraphData] = useState<GraphData | null>(null);
-	const [loading, setLoading] = useState(true);
+	const [graphData, setGraphData] = useState<GraphData | null>(isStaticDemo ? demoGraphData : null);
+	const [loading, setLoading] = useState(!isStaticDemo);
 	const [error, setError] = useState<string | null>(null);
 
 	const refresh = useCallback(async () => {
+		if (isStaticDemo) return;
 		setLoading(true);
 		setError(null);
 		try {
@@ -27,7 +29,7 @@ export function useGraphData() {
 	}, []);
 
 	useEffect(() => {
-		refresh();
+		if (!isStaticDemo) refresh();
 	}, [refresh]);
 
 	return { graphData, loading, error, refresh };

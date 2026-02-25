@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { deletePaper, getAllPapers } from "@/lib/store/paper-store";
 import type { ApiResponse, Paper } from "@/lib/types";
 
+export const dynamic = "force-static";
+
 export async function GET(): Promise<NextResponse<ApiResponse<Paper[]>>> {
 	const papers = getAllPapers();
 	return NextResponse.json({ success: true, data: papers });

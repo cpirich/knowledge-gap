@@ -28,6 +28,7 @@ jobs:
         env:
           STATIC_EXPORT: "true"
           NEXT_PUBLIC_BASE_PATH: /knowledge-gap
+          NEXT_PUBLIC_STATIC_DEMO: "1"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out/
