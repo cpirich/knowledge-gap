@@ -6,6 +6,7 @@ import { RecentActivity } from "@/components/dashboard/recent-activity";
 import { StatsCards } from "@/components/dashboard/stats-cards";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { usePapers } from "@/hooks/use-papers";
+import { demoAnalysis, isStaticDemo } from "@/lib/demo/data";
 import type { AnalysisResult, ApiResponse } from "@/lib/types";
 
 export default function DashboardPage() {
@@ -13,6 +14,10 @@ export default function DashboardPage() {
 	const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
 
 	useEffect(() => {
+		if (isStaticDemo) {
+			setAnalysis(demoAnalysis);
+			return;
+		}
 		async function loadAnalysis() {
 			try {
 				const res = await fetch("/api/analyze/latest");

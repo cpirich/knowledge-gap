@@ -3,6 +3,8 @@ import { ingestPaper } from "@/lib/ingestion/pipeline";
 import type { ApiResponse, Paper } from "@/lib/types";
 import { ValidationError } from "@/lib/utils/errors";
 
+export const dynamic = "force-static";
+
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
 export async function POST(request: Request): Promise<NextResponse<ApiResponse<Paper>>> {

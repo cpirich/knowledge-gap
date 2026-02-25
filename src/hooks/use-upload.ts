@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { isStaticDemo } from "@/lib/demo/data";
 import type { ApiResponse, Paper } from "@/lib/types";
 
 export function useUpload() {
@@ -8,6 +9,9 @@ export function useUpload() {
 	const [progress, setProgress] = useState(0);
 
 	const upload = useCallback(async (file: File): Promise<Paper | null> => {
+		if (isStaticDemo) {
+			throw new Error("Upload is disabled in demo mode");
+		}
 		setUploading(true);
 		setProgress(10);
 		try {

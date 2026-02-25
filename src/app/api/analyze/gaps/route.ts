@@ -7,6 +7,8 @@ import { getAllPapers, getClaimsByPaper, saveAnalysis } from "@/lib/store";
 import type { AnalysisResult, ApiResponse } from "@/lib/types";
 import { generateId } from "@/lib/utils/id";
 
+export const dynamic = "force-static";
+
 export async function POST(): Promise<NextResponse<ApiResponse<AnalysisResult>>> {
 	try {
 		const papers = getAllPapers().filter((p) => p.status === "ready");

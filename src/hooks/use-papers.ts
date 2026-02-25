@@ -1,14 +1,16 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { demoPapers, isStaticDemo } from "@/lib/demo/data";
 import type { ApiResponse, Paper } from "@/lib/types";
 
 export function usePapers() {
-	const [papers, setPapers] = useState<Paper[]>([]);
-	const [loading, setLoading] = useState(true);
+	const [papers, setPapers] = useState<Paper[]>(isStaticDemo ? demoPapers : []);
+	const [loading, setLoading] = useState(!isStaticDemo);
 	const [error, setError] = useState<string | null>(null);
 
 	const refresh = useCallback(async () => {
+		if (isStaticDemo) return;
 		setLoading(true);
 		setError(null);
 		try {
@@ -27,7 +29,7 @@ export function usePapers() {
 	}, []);
 
 	useEffect(() => {
-		refresh();
+		if (!isStaticDemo) refresh();
 	}, [refresh]);
 
 	return { papers, loading, error, refresh };

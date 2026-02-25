@@ -3,6 +3,8 @@ import { detectContradictions } from "@/lib/analysis/contradiction-detector";
 import { getAllPapers, getClaimsByPaper } from "@/lib/store";
 import type { ApiResponse, Contradiction } from "@/lib/types";
 
+export const dynamic = "force-static";
+
 export async function POST(): Promise<NextResponse<ApiResponse<Contradiction[]>>> {
 	try {
 		const papers = getAllPapers().filter((p) => p.status === "ready");

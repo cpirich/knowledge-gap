@@ -3,6 +3,7 @@
 import { AlertTriangle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ContradictionList } from "@/components/contradictions/contradiction-list";
+import { demoAnalysis, demoClaimsMap, demoPapersMap, isStaticDemo } from "@/lib/demo/data";
 import type { AnalysisResult, ApiResponse, Claim, Paper } from "@/lib/types";
 
 export default function ContradictionsPage() {
@@ -12,6 +13,13 @@ export default function ContradictionsPage() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
+		if (isStaticDemo) {
+			setAnalysis(demoAnalysis);
+			setClaims(demoClaimsMap);
+			setPapers(demoPapersMap);
+			setLoading(false);
+			return;
+		}
 		async function load() {
 			try {
 				const [analysisRes, papersRes] = await Promise.all([

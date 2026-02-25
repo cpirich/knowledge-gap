@@ -1,14 +1,16 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { demoAnalysis, isStaticDemo } from "@/lib/demo/data";
 import type { AnalysisResult, ApiResponse } from "@/lib/types";
 
 export function useAnalysis() {
-	const [result, setResult] = useState<AnalysisResult | null>(null);
+	const [result, setResult] = useState<AnalysisResult | null>(isStaticDemo ? demoAnalysis : null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
 	const analyze = useCallback(async (paperIds: string[]) => {
+		if (isStaticDemo) return demoAnalysis;
 		setLoading(true);
 		setError(null);
 		try {
@@ -33,6 +35,7 @@ export function useAnalysis() {
 	}, []);
 
 	const fetchResult = useCallback(async (analysisId: string) => {
+		if (isStaticDemo) return demoAnalysis;
 		setLoading(true);
 		setError(null);
 		try {
