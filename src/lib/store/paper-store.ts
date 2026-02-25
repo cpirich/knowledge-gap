@@ -105,3 +105,8 @@ export function getClaimsByPaper(paperId: string): Claim[] {
 	load();
 	return [...claims.values()].filter((c) => c.paperId === paperId);
 }
+
+export function getAllClaims(): Claim[] {
+	load();
+	return [...claims.values()];
+}
