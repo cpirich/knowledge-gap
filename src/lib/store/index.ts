@@ -3,6 +3,7 @@ export {
 	addClaim,
 	addPaper,
 	deletePaper,
+	getAllClaims,
 	getAllPapers,
 	getClaim,
 	getClaimsByPaper,
